@@ -6,13 +6,13 @@ try {
 await sequelize.sync({ force: true }); 
 console.log("Table created."); 
 
-const initialData = [ 
-{ name: "Alice", activity: "Login" }, 
-{ name: "Bob", activity: "Upload Photo"}, 
-]; 
+// const initialData = [ 
+// { name: "Alice", activity: "Login" }, 
+// { name: "Bob", activity: "Upload Photo"}, 
+// ]; 
 
-await UserActivity.bulkCreate(initialData); 
-console.log("Initial data inserted."); 
+// await UserActivity.bulkCreate(initialData); 
+// console.log("Initial data inserted."); 
 
 } catch (error) { 
 console.error("Error inserting data:", error); 

@@ -1,9 +1,24 @@
-import { sequelize, UserActivity } from './db.js';
+import { UserActivity } from './db.js';
+
 
 
 const names = ['Charlie', 'Dana', 'Eva', 'Frank']; 
 const activities = ['Comment', 'Like', 'Share', 'Logout']
 
-let indexNames = Math.floor(Math.random() * names.length);
+const getIndex = (list) => Math.floor(Math.random() * list.length);
 
-let indexActivities = Math.floor(Math.random() * activities.length);
+
+
+setInterval(async ()  => {
+    await UserActivity.create({
+        name: names[getIndex(names)], 
+        activity: activities[getIndex(activities)]})
+    }, 10000)
+
+setInterval(async () => {
+    const allUsers = await UserActivity.findAll();
+    console.table(allUsers.map((user) => user.toJSON()))
+
+}, 30000)
+
+
